@@ -103,5 +103,51 @@ DEPARTMENT_ID=90 GROUP BY FIRST_NAME,YEAR_OF_JOINING,DEPARTMENT_ID;
 SELECT AVG( SALARY)  FROM KARUPPASAMY_EMPLOYEE WHERE DEPARTMENT_ID=102; 
 
 
+ 
+
  --17.Display average salary for employees who did a job in the past. 
---SELECT AVG(SALARY) FROM KARUPPASAMY_EMPLOYEE GROUP BY SALARY HAVING COUNT(*)>1;
+SELECT AVG(SALARY) AS PAST FROM KARUPPASAMY_EMPLOYEE WHERE YEAR_OF_RELIEVING<=GETDATE();
+
+--18)Display the month in which more than 5 employees joined in any department 
+SELECT MONTH(YEAR_OF_JOINING) AS MONTH_IN FROM KARUPPASAMY_EMPLOYEE GROUP BY
+MONTH(YEAR_OF_JOINING) HAVING COUNT(YEAR_OF_JOINING)>5;
+
+
+
+--19)Display employee last name, starting date for all jobs from 2000 to 2005
+SELECT LAST_NAME ,DAY(YEAR_OF_JOINING) FROM KARUPPASAMY_EMPLOYEE WHERE YEAR (YEAR_OF_JOINING) BETWEEN 2000 AND 2005;
+
+--20)Display years in which more than 10 employees joined. 
+INSERT INTO KARUPPASAMY_EMPLOYEE(EMPLOYEE_ID,FIRST_NAME,LAST_NAME,SALARY,DEPARTMENT_ID,YEAR_OF_JOINING,YEAR_OF_RELIEVING) VALUES
+(10,'KALEES','WARAN',244543.34,56,1993-12-31,1998-12-31),
+(20, 'VIJAY','KUMAR',244543.34,56,1996-12-01,2000-12-01),
+
+(30, 'MOGAN','VASU',244543.34,56,1993-12-31,1998-12-31),
+(40,'VIYAY','SETHUPATHI',244543.34,56,1956-12-01,1958-12-01),
+ALTER TABLE  KARUPPASAMY_EMPLOYEE ADD YEAR_OF_JOINING
+(50, 'SANTHOSH','SHREE',244543.34,56,1993-02-301,1995-2-31),
+(70, 'PRIYA', 'MANI',244543.34,56,1953-12-31,1956-12-31),
+(80, 'GOGUAL','RAM',244543.34,56,1999-01-31,2000-01-31),
+(90, 'JEGAN','NATHAN',244543.34,56,2000-12-31,2001-12-31),
+(100,'SUBERAMANI','VINOTH',244543.34,56,2020-12-31,2021-12-31);
+
+ SELECT YEAR(YEAR_OF_JOINING),COUNT(YEAR_OF_JOINING) FROM KARUPPASAMY_EMPLOYEE
+ GROUP BY YEAR(YEAR_OF_JOINING) HAVING COUNT(MONTH(YEAR_OF_JOINING)) > 2;
+
+
+--Display employee ID for jobs with average salary more than 10000.  
+--Display the number of days between working for all employees. 
+--.Display employees who joined in the current year.  
+--Display first name in upper case and last name in lower case. 
+.--Display the length of first name for employees where last name contain character ‘b’ after 3rd position.  
+---Display first name and experience of the employees. 
+.--Display employees who joined in the month of May.  
+.--write a SQL query to find those employees who earn more than the average salary. Return employee ID, first name, last name. 
+--.Difference between primary key and Foreign key with exmple. 
+--Repalce ‘null’ value to ‘AAA’  
+.--Create View table for ID,FIRST_NAME,LAST_NAME, DEPARTMENT_ID,DEPARTMENT_NAME. 
+.--Create SYNONYMS for EMPLOYEE table. 
+.--Create a procedure for who are joined between 2 dates. 
+--Create a procedure for insert a rows in Department table. 
+--.write a query for convert ‘2006-12-30 00:38:54.840’ to 20061230003854
+
